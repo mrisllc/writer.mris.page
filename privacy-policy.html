@@ -487,28 +487,42 @@
     </div>
 
     <div class="footer-note">
-        <p>  MRIS Private Notes · সর্বশেষ সংস্করণ / Last Updated: ১৭ জুলাই, ২০২৬</p>
-        <p style="font-size:0.85rem; margin-top:0.2rem;">এই নীতিমালা সময়ে সময়ে হালনাগাদ হতে পারে /
-            This policy may be updated from time to time.</p>
-        <p style="font-size:0.75rem; opacity:0.7;">&copy; ২০২৬ MRIS Private Notes · সব অধিকার সংরক্ষিত 
-            / All Rights Reserved</p>
+    <!-- শুধু বাংলা -->
+    <div class="lang-content bn-text">
+        <p>MRIS Private Notes · সর্বশেষ সংস্করণ: ১৭ জুলাই, ২০২৬</p>
+        <p>এই নীতিমালা সময়ে সময়ে হালনাগাদ হতে পারে।</p>
+        <p>© ২০২৬ MRIS Private Notes · সব অধিকার সংরক্ষিত</p>
     </div>
+
+    <!-- শুধু ইংরেজি -->
+    <div class="lang-content en-text">
+        <p>MRIS Private Notes · Last Updated: July 17, 2026</p>
+        <p>This policy may be updated from time to time.</p>
+        <p>© 2026 MRIS Private Notes · All Rights Reserved</p>
+    </div>
+</div>
 </div>
 
 <script>
   function switchLang(lang, event) {
-    // Hide all content
     document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
 
-    // Show selected content
-    document.getElementById(lang).classList.add('active');
+    const mainSection = document.getElementById(lang);
+    if (mainSection) {
+      mainSection.classList.add('active');
+    }
 
-    // Update button active state
+    document.querySelectorAll('.' + lang + '-text').forEach(el => el.classList.add('active'));
+
     document.querySelectorAll('.lang-tabs button').forEach(btn => btn.classList.remove('active'));
     if (event && event.target) {
       event.target.classList.add('active');
     }
   }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.en-text').forEach(el => el.classList.add('active'));
+  });
 </script>
 
 </body>
