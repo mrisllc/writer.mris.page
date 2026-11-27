@@ -121,7 +121,9 @@
         <button onclick="switchLang('bn')"> বাংলা </button>
     </div>
     <!-- ==================== ENGLISH CONTENT ==================== -->
-    <div id="en" class="lang-content">
+    <div id="en" class="lang-content active">
+  ...
+</div>
         <!-- Chapter 1 -->
         <div class="chapter"><h2> Legal Recognition &amp; Foundation</h2>
             <p><strong>1.1</strong> This document constitutes a legally binding agreement between MRIS Private Notes and its users, clearly outlining the rights, duties, and responsibilities of both parties, and is admissible as evidence in any legal context.</p>
@@ -304,7 +306,9 @@
     </div>
     
     <!-- ==================== BENGALI CONTENT ==================== -->
-    <div id="bn" class="lang-content active">
+    <div id="bn" class="lang-content">
+  ...
+</div>
 
         <!-- অধ্যায় ১ -->
         <div class="chapter"><h2> আইনি পরিচিতি ও ভিত্তি</h2>
@@ -497,15 +501,19 @@
 </div>
 
 <script>
-    function switchLang(lang) {
-        // Hide all content
-        document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
-        // Show selected
-        document.getElementById(lang).classList.add('active');
-        // Update button active state
-        document.querySelectorAll('.lang-tabs button').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+  function switchLang(lang, event) {
+    // Hide all content
+    document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+
+    // Show selected content
+    document.getElementById(lang).classList.add('active');
+
+    // Update button active state
+    document.querySelectorAll('.lang-tabs button').forEach(btn => btn.classList.remove('active'));
+    if (event && event.target) {
+      event.target.classList.add('active');
     }
+  }
 </script>
 
 </body>
